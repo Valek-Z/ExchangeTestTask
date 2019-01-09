@@ -35,34 +35,15 @@ traders as described above. Reject cancellation requests of non-resting orders b
 corresponding exception. Assume that each order has its unique Order ID assigned by some
 preprocessing module.
 
-public interface ExchangeInterface {
 
-
-public void send(long orderId, boolean isBuy, int id, int size);
-
-public void cancel(long orderId) throws RequestRejectedException;
-}
 
 In order to test the integrity of your solution please also implement the following query interface.
 
 If you created your own test suit, you may also attach it.
 
-public interface QueryInterface {
-
-public int getTotalSizeAtPrice(int id); // Return sum of sizes of resting orders at <id> or zero
-
-public int getHighestBuyPrice(); // Return the highest id with at least one resting Buy order
-
-public int getLowestSellPrice(); // Return the lowest id with at least one resting Sell order
-
-}
 
 Bonus task (optionally)
 
 Implement the following interface which allows traders to modify id and/or size of their
 working orders. Reject modification requests of non-resting orders.
 
-public interface AdvancedExchangeInterface extends ExchangeInterface {
-
-public void modify(long oid, int newPrice, int newSize) throws RequestRejectedException;
-}
