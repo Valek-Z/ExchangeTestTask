@@ -56,13 +56,10 @@ public class Exchange implements ExchangeInterface {
 	@Override
 	public void cancel ( long orderId ) throws RequestRejectedException {
 		
-		try {
+		
 			if ( limitOrders ( ).getOrderById ( orderId ) != null ) {
 				limitOrders ( ).deleteOrder ( limitOrders ( ).getOrderById ( orderId ) );
-			}
-		} catch (RequestRejectedException e) {
-			throw new RequestRejectedException ( "This order can't canceled: because there's not found" );
-		}
+		
 		
 		
 	}
